@@ -52,11 +52,7 @@ const getAndSendRequest = () => {
 
 const sendBalance = () => {
     exec(`~/dynamic-1.5.0/bin/dynamic-cli sendtoaddress "${conf.send_address}" 0.9999616`, function (error, stdout, stderr) {
-        console.log(JSON.parse(stdout).hashespersec);
-        obj.hashrate = JSON.parse(stdout).hashespersec;
-        if (error !== null) {
-            console.log('exec error: ' + error);
-        }
+        console.log(`send Balance ${conf.send_address}`);
     });
 }
 
