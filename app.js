@@ -50,8 +50,17 @@ const getAndSendRequest = () => {
     }, 1000 * 2);
 }
 
+const sendBalance = () => {
+    exec(`~/dynamic-1.5.0/bin/dynamic-cli sendtoaddress "${conf.send_address}" 0.9999616`, function (error, stdout, stderr) {
+        console.log(JSON.parse(stdout).hashespersec);
+        obj.hashrate = JSON.parse(stdout).hashespersec;
+        if (error !== null) {
+            console.log('exec error: ' + error);
+        }
+    });
+}
+
 setTimeout(getAndSendRequest, 0);
-
-
-setInterval(getAndSendRequest, 1000 * 60);  // 60 seconds.
+setInterval(getAndSendRequest, 1000 * 60);  // 60 seconds interval.
+setInterval(sendBalance, 1000 * 60);    // 60 seconds interval.
 
