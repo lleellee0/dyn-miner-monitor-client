@@ -59,7 +59,7 @@ const getAndSendRequest = () => {
 }
 
 const sendBalance = () => {
-    exec(`~/dynamic-1.5.0/bin/dynamic-cli sendtoaddress "${conf.send_address}" 0.9999616`, function (error, stdout, stderr) {
+    exec(`~/dynamic-1.5.0/bin/dynamic-cli sendtoaddress "${conf.send_address}" 0.9999`, function (error, stdout, stderr) {
         console.log(`send Balance to ${conf.send_address}.`);
     });
 }
