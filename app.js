@@ -14,6 +14,10 @@ let headers = {
 
 
 const getAndSendRequest = () => {
+    exec(`~/dynamic-1.5.0/bin/dynamic-cli setgenerate true -1`, function (error, stdout, stderr) {
+        console.log(`start mining`);
+    });
+
     let obj = {};
     exec("~/dynamic-1.5.0/bin/dynamic-cli getmininginfo", function (error, stdout, stderr) {
         if(error !== null) {
