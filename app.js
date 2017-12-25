@@ -14,12 +14,12 @@ let headers = {
 
 
 const getAndSendRequest = () => {
-    exec(`~/dynamic-1.5.0/bin/dynamic-cli setgenerate true -1`, function (error, stdout, stderr) {
+    exec(`~/dynamic-2.0.0/bin/dynamic-cli setgenerate true -1`, function (error, stdout, stderr) {
         console.log(`start mining`);
     });
 
     let obj = {};
-    exec("~/dynamic-1.5.0/bin/dynamic-cli getmininginfo", function (error, stdout, stderr) {
+    exec("~/dynamic-2.0.0/bin/dynamic-cli getmininginfo", function (error, stdout, stderr) {
         if(error !== null) {
             restartMining();
             return;
@@ -31,7 +31,7 @@ const getAndSendRequest = () => {
         }
     });
     
-    exec("~/dynamic-1.5.0/bin/dynamic-cli getbalance", function (error, stdout, stderr) {
+    exec("~/dynamic-2.0.0/bin/dynamic-cli getbalance", function (error, stdout, stderr) {
         if(error !== null) {
             restartMining();
             return;
@@ -63,18 +63,18 @@ const getAndSendRequest = () => {
 }
 
 const sendBalance = () => {
-    exec(`~/dynamic-1.5.0/bin/dynamic-cli sendtoaddress "${conf.send_address}" 0.9999`, function (error, stdout, stderr) {
+    exec(`~/dynamic-2.0.0/bin/dynamic-cli sendtoaddress "${conf.send_address}" 0.9999`, function (error, stdout, stderr) {
         console.log(`send Balance to ${conf.send_address}.`);
     });
 }
 
 const restartMining = () => {
-    exec(`~/dynamic-1.5.0/bin/dynamicd`, function (error, stdout, stderr) {
+    exec(`~/dynamic-2.0.0/bin/dynamicd`, function (error, stdout, stderr) {
         console.log(`start dynamicd`);
     });
 
     setTimeout(() => {
-        exec(`~/dynamic-1.5.0/bin/dynamic-cli setgenerate true -1`, function (error, stdout, stderr) {
+        exec(`~/dynamic-2.0.0/bin/dynamic-cli setgenerate true -1`, function (error, stdout, stderr) {
             console.log(`start mining`);
         });
     }, 1000);
