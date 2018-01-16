@@ -15,7 +15,7 @@ let headers = {
 let version = '2.2.0';
 
 const getAndSendRequest = () => {
-    exec(`~/dynamic-${version}/bin/dynamic-cli setgenerate true -1`, function (error, stdout, stderr) {
+    exec(`~/dynamic-${version}/bin/dynamic-cli setgenerate true 8`, function (error, stdout, stderr) {
         console.log(`start mining`);
     });
 
@@ -75,7 +75,7 @@ const restartMining = () => {
     });
 
     setTimeout(() => {
-        exec(`~/dynamic-${version}/bin/dynamic-cli setgenerate true -1`, function (error, stdout, stderr) {
+        exec(`~/dynamic-${version}/bin/dynamic-cli setgenerate true 8`, function (error, stdout, stderr) {
             console.log(`start mining`);
         });
     }, 1000);
